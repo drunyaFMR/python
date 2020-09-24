@@ -6,7 +6,10 @@ import json
 with open('text_7.txt', 'r', encoding='utf-8') as my_text:
     my_dict = {line.split()[0]: float(line.split()[2]) - float(line.split()[3]) for line in my_text.readlines()}
     my_dict1 = {key: value for key, value in my_dict.items() if value > 0}
-    my_dict2 = {'average_profit': sum([value for value in my_dict.values() if value > 0])}
+    numbers = 0
+    for key in my_dict1.keys():
+        numbers += 1
+    my_dict2 = {'average_profit': sum([value for value in my_dict.values() if value > 0]) / numbers}
     my_dict3 = {key: value for key, value in my_dict.items() if value < 0}
     my_list = [my_dict1, my_dict2, my_dict3]
     [print(el) for el in my_list]
